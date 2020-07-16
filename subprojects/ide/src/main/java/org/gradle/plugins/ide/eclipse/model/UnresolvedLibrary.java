@@ -16,20 +16,25 @@
 
 package org.gradle.plugins.ide.eclipse.model;
 
+import org.gradle.api.Incubating;
+
 /**
  * A library that turned out to be unresolved.
+ *
+ * @since 6.7
  */
+@Incubating
 public class UnresolvedLibrary extends Library {
 
-    /**
-     * The attempted selector reported by the related UnresolvedDependencyResult
-     */
     private String attemptedSelector;
 
     public UnresolvedLibrary(FileReference library) {
         super(library);
     }
 
+    /**
+     * The attempted selector reported by the related UnresolvedDependencyResult
+     */
     public String getAttemptedSelector() {
         return attemptedSelector;
     }

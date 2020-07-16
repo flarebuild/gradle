@@ -123,7 +123,7 @@ class EclipseModelBuilderDependenciesTest extends AbstractProjectBuilderSpec {
         DefaultEclipseProject eclipseChild4 = eclipseModel.children.find { it.name == 'child4' }
         def unresolvedRefs = eclipseChild4.classpath.findAll { it.isUnresolved() }
         unresolvedRefs.size == 2
-        unresolvedRefs.stream().allMatch {ur -> (ur.file.name.contains("unresolved dependency")) }
+        unresolvedRefs.stream().allMatch { ref -> (ref.file.name.contains("unresolved dependency")) }
     }
 
     def "project dependencies are mapped to eclipse model with supplied runtime"() {
@@ -187,7 +187,6 @@ class EclipseModelBuilderDependenciesTest extends AbstractProjectBuilderSpec {
         eclipseChild3.classpath[0].source.name == 'customJar-sources.jar'
         eclipseChild3.classpath[0].javadoc.name == 'customJar-javadoc.jar'
     }
-
 
     private def createEclipseModelBuilder() {
         def gradleProjectBuilder = new GradleProjectBuilder()
