@@ -111,7 +111,7 @@ public class DefaultPluginContainer extends DefaultPluginCollection<Plugin> impl
     @Override
     public <P extends Plugin> P findPlugin(Class<P> type) {
         for (Plugin plugin : this) {
-            if (plugin.getClass().equals(type)) {
+            if (type.isAssignableFrom(plugin.getClass())) {
                 return type.cast(plugin);
             }
         }
